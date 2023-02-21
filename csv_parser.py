@@ -9,8 +9,7 @@ from lib.action_description import action_description as act_desc
 from lib.interactive import exit_on_error,continue_check
 
 
-version_info = (0, 1, 2)
-version = '.'.join(str(c) for c in version_info)
+version_number = (0, 1, 2)
 
 csv_data= []
 
@@ -20,7 +19,7 @@ parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter, 
     )
 parser.add_argument("input_file", help='''Enter input file ''')
 parser.add_argument("output_file", help='''Enter output file ''')
-parser.add_argument('-v','--version', action='version', version='%(prog)s {}'.format(version), 
+parser.add_argument('-v','--version', action='version', version='%(prog)s {}'.format(ver.ver_info(version_number)), 
                     help='show the version number and exit')
 args = parser.parse_args()
 
