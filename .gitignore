@@ -130,4 +130,5 @@ dmypy.json
 
 interim.csv
 data
+outfile.csv
 .gitignore

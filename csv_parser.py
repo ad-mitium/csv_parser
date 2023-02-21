@@ -9,15 +9,15 @@ from lib.action_description import action_description as act_desc
 from lib.interactive import exit_on_error,continue_check
 
 
-version_info = (0, 1, 1)
+version_info = (0, 1, 2)
 version = '.'.join(str(c) for c in version_info)
 
 csv_data= []
 
 parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter, description=act_desc['desc']
     , 
-   epilog=act_desc['end']
-)
+    epilog=act_desc['end']
+    )
 parser.add_argument("input_file", help='''Enter input file ''')
 parser.add_argument("output_file", help='''Enter output file ''')
 parser.add_argument('-v','--version', action='version', version='%(prog)s {}'.format(version), 
@@ -30,13 +30,19 @@ args = parser.parse_args()
 input_file = args.input_file
 output_file = args.output_file
 
-with open(input_file, 'rt') as csvfile:
-    csv_data_file = csv.reader(csvfile)
-    next(csv_data_file)
-    for col in csv_data_file:
-         csv_cols = col[0].split(" ")
-         for i in csv_cols:
-              csv_data.append(i) 
+try:
+    with open(input_file, 'rt') as csvfile:
+        csv_data_file = csv.reader(csvfile)
+        next(csv_data_file)
+        for col in csv_data_file:
+            csv_cols = col[0].split(",")
+            print(csv_cols)
+            for i in csv_cols:
+                csv_data.append(i) 
+except FileNotFoundError as fnf_error:
+        print(fnf_error)
+except IOError:
+    print("Unable to load "+input_file)
 
 instances_counted = []
 for i in csv_data:
