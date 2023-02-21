@@ -7,8 +7,7 @@ from lib import version as ver
 from lib import colors
 from lib.action_description import action_description as act_desc
 from lib.interactive import exit_on_error,continue_check
-from collections import Counter
-from collections import defaultdict
+
 
 version_info = (0, 1, 1)
 version = '.'.join(str(c) for c in version_info)
