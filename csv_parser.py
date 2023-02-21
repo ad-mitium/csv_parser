@@ -4,18 +4,22 @@
 
 import csv
 import argparse
+from lib import version as ver
+from lib import colors
+from lib.action_description import action_description as act_desc
+from lib.interactive import exit_on_error,continue_check
 from collections import Counter
 from collections import defaultdict
 
-version_info = (0, 1, 0)
+version_info = (0, 1, 1)
 version = '.'.join(str(c) for c in version_info)
 
 csv_data= []
 
-parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter, description='''
-   Parses csv data file for repeated data and will count recurrence from supplied csv file
-    ''', 
-   epilog=' ')
+parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter, description=act_desc['desc']
+    , 
+   epilog=act_desc['end']
+)
 parser.add_argument("input_file", help='''Enter input file ''')
 parser.add_argument("output_file", help='''Enter output file ''')
 parser.add_argument('-v','--version', action='version', version='%(prog)s {}'.format(version), 
