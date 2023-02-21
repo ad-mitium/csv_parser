@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # Authored by Timothy Mui 4/4/2022
-# Version 0.1.0
 
 import csv
 import argparse
